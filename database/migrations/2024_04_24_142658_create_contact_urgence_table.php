@@ -11,14 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('parent', function (Blueprint $table) {
+        Schema::create('contact_urgence', function (Blueprint $table) {
             $table->id();
-            $table->string('Nom');
-            $table->string('Prenom');
-            $table->date('Date_de_naissance');
-            $table->string('Lieu');
-            $table->string('Adresse_actuelle');
-            $table->string('Groupe_sanguin');
             $table->timestamps();
         });
     }
@@ -28,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('parent');
+        Schema::dropIfExists('contact_urgence');
     }
 };
