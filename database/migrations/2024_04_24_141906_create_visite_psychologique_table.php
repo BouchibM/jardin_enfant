@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('visite_psychologique', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('visite_id');
+            $table->foreign('visite_id')->references('id')->on('visite')->onDelete('cascade');
+            $table->unsignedBigInteger('psychologue_id');
+            $table->foreign('psychologue_id')->references('id')->on('psychologue')->onDelete('cascade');
             $table->timestamps();
         });
     }

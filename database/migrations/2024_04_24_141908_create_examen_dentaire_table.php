@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('examen_dentaire', function (Blueprint $table) {
             $table->id();
+            $table->string('Observation');
+            $table->unsignedBigInteger('visite_id');
+            $table->foreign('visite_id')->references('id')->on('visite')->onDelete('cascade');
+            $table->unsignedBigInteger('dentist_id');
+            $table->foreign('dentist_id')->references('id')->on('dentist')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('entreprise', function (Blueprint $table) {
+        Schema::create('fichier', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
+            $table->string('contenu'); // This will store the path to the file or photo
+            $table->unsignedBigInteger('inscription_id');
+            $table->foreign('inscription_id')->references('id')->on('inscription')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('entreprise');
+        Schema::dropIfExists('fichier');
     }
 };

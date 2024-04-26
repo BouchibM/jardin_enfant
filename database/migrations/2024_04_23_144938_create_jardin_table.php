@@ -17,15 +17,12 @@ return new class extends Migration
             $table->date('date_ouverture');
             $table->string('numero_agrement');
             $table->string('nature_juridique');
-            $table->int('poste_aménagé');
+            $table->integer('poste_aménagé');
             $table->string('adresse');
             $table->string('status');
-            $table->unsignedBigInteger('employe_jardin_id');
-            $table->unsignedBigInteger('section_id');
-            $table->unsignedBigInteger('enfant_id');
-            $table->foreign('employe_jardin_id')->references('id')->on('employe_jardin')->onDelete('cascade');
-            $table->foreign('section_id')->references('id')->on('section')->onDelete('cascade');
-            $table->foreign('enfant_id')->references('id')->on('enfant')->onDelete('cascade');
+            $table->integer('capacite');
+            $table->unsignedBigInteger('region_id'); 
+            $table->foreign('region_id')->references('id')->on('region')->onDelete('cascade');
             $table->timestamps();
 
         });
@@ -36,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jardins');
+        Schema::dropIfExists('jardin');
     }
 };

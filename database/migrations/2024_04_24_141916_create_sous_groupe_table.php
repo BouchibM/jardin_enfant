@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('psycologue', function (Blueprint $table) {
+        Schema::create('sous_groupe', function (Blueprint $table) {
             $table->id();
+            $table->text('titre');
             $table->timestamps();
         });
     }
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('psycologue');
+        Schema::dropIfExists('sous_groupe');
     }
 };

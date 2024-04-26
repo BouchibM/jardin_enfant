@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('medecin', function (Blueprint $table) {
+        Schema::create('abscence_medical', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
+            $table->string('motif');
+            $table->unsignedBigInteger('visite_spontanee_id'); // Add this line
+        $table->foreign('visite_spontanee_id')->references('id')->on('visite_spontanee')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('medecin');
+        Schema::dropIfExists('abscence_medical');
     }
 };

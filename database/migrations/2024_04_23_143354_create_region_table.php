@@ -16,19 +16,17 @@ return new class extends Migration
             $table->string('nom');
             $table->string('statue');
             $table->string('emplacement');
-            $table->unsignedBigInteger('jardin_id');
-            $table->foreign('jardin_id')->references('id')->on('jardin')->onDelete('cascade');
             $table->timestamps();
             
         });
 
-    }
+    } 
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('regions');
+        Schema::dropIfExists('region');
     }
 };

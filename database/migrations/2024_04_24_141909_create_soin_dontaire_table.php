@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('abscence_medical', function (Blueprint $table) {
+        Schema::create('soin_dentaire', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('visite_id');
+            $table->foreign('visite_id')->references('id')->on('visite')->onDelete('cascade');
+            $table->unsignedBigInteger('dentist_id');
+            $table->foreign('dentist_id')->references('id')->on('dentist')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('abscence_medical');
+        Schema::dropIfExists('soin_dentaire');
     }
 };

@@ -11,8 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fichier', function (Blueprint $table) {
+        Schema::create('contact_urgence', function (Blueprint $table) {
             $table->id();
+            $table->string('Nom');
+            $table->string('Prenom');
+            $table->string('Adresse');
+            $table->integer('Telephone');
+            $table->integer('Domicil');
+            $table->string('Travail');
             $table->timestamps();
         });
     }
@@ -22,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fichier');
+        Schema::dropIfExists('contact_urgence');
     }
 };

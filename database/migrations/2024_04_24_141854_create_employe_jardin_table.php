@@ -13,8 +13,17 @@ return new class extends Migration
     {
         Schema::create('employe_jardin', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('employeId');
+            $table->string('Nom');
+            $table->string('Prenom');
+            $table->string('proffession');
+            $table->unsignedBigInteger('utilisateur_id');
+            $table->unsignedBigInteger('jardin_id');
+            $table->foreign('utilisateur_id')->references('id')->on('utilisateur');
+            $table->foreign('jardin_id')->references('id')->on('jardin');
+            $table->timestamps(); 
         });
+        
     }
 
     /**

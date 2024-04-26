@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('section', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->unsignedBigInteger('classe_id');
-            $table->foreign('classe_id')->references('id')->on('classe')->onDelete('cascade');
+            $table->integer('capacite');
+            $table->unsignedBigInteger('jardin_id');
+            $table->foreign('jardin_id')->references('id')->on('jardin')->onDelete('cascade');
             $table->timestamps();
         });
     }

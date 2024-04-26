@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('anonce', function (Blueprint $table) {
             $table->id();
+            $table->string('Type');
+            $table->date('datedebut');
+            $table->date('datefin');
+            $table->date('date_creation');
+            $table->unsignedBigInteger('gestionnaire_id'); 
+            $table->foreign('gestionnaire_id')->references('id')->on('gestionnaire')->onDelete('cascade'); 
+            
             $table->timestamps();
         });
     }

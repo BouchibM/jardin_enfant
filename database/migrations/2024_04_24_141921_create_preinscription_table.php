@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('utilisateur', function (Blueprint $table) {
+        Schema::create('preinscription', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('inscription_id');
+            $table->foreign('inscription_id')->references('id')->on('inscription')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('utilisateur');
+        Schema::dropIfExists('preinscription');
     }
 };
