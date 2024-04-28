@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fichier', function (Blueprint $table) {
+        Schema::create('detaille_dossier', function (Blueprint $table) {
             $table->id();
             $table->date('date');
             $table->string('contenu'); // This will store the path to the file or photo
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fichier');
+        Schema::dropIfExists('detaille_dossier');
     }
 };
