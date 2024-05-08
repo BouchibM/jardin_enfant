@@ -23,8 +23,12 @@ return new class extends Migration
      */
     public function down(): void
     {
+    {
+        Schema::table('enfant', function (Blueprint $table) {
         $table->string('Lieu')->nullable(false)->change();
             $table->string('Adresse_actuelle')->nullable(false)->change();
             $table->string('Groupe_sanguin')->nullable(false)->change();
+        }); 
     }
+}
 };
