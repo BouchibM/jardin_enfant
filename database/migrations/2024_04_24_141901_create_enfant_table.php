@@ -19,10 +19,8 @@ return new class extends Migration
             $table->string('Lieu');
             $table->string('Adresse_actuelle');
             $table->string('Groupe_sanguin');
-            $table->unsignedBigInteger('jardin_id');
             $table->unsignedBigInteger('parent_id');
 
-            $table->foreign('jardin_id')->references('id')->on('jardin');
             $table->foreign('parent_id')->references('id')->on('parent');
             $table->timestamps();
         });

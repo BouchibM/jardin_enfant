@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('detaille_dossier', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->string('contenu'); // This will store the path to the file or photo
-            $table->unsignedBigInteger('inscription_id');
-            $table->foreign('inscription_id')->references('id')->on('inscription')->onDelete('cascade');
+            $table->string('chemin'); // This will store the path to the file or photo
+            $table->unsignedBigInteger('reinscription_id');
+            $table->unsignedBigInteger('preinscription_id');
+            $table->foreign('reinscription_id')->references('id')->on('reinscription')->onDelete('cascade');
+            $table->foreign('preinscription_id')->references('id')->on('preinscription')->onDelete('cascade');
             $table->timestamps();
+            
         });
     }
 

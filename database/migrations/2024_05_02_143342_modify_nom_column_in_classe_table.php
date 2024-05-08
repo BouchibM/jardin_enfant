@@ -9,21 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    
+    public function up()
     {
-        Schema::create('section', function (Blueprint $table) {
-            $table->id();
-            $table->string('nom');
-            $table->integer('capacite')->nullable();
-            $table->timestamps();
+        Schema::table('classe', function (Blueprint $table) {
+        $table->string('nom')->nullable()->change();
         });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('section');
+        Schema::table('classe', function (Blueprint $table) {
+            //
+        });
     }
 };
