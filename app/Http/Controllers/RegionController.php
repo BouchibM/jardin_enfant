@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Region;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class RegionController extends Controller
 {
@@ -12,27 +13,28 @@ class RegionController extends Controller
     {
         $regions = Region::all();
         return view('region.regionList', compact('regions'));
-// dans update j'ajoute status
+
     }
-//     public function create(Request $request)
-//     {
-//        $request->validate([
-//             'Nom'=>['required', 'regex:/^[a-zA-Z\s\-]+$/', 'unique:region'], 
-//             'Emplacement'=>'required', 
-           
-//         ]);
-     
-            
-
-//             $regions= Region::create([
-//             'Nom'=>$request->Nom, 
-//             'Emplacement'=>$request->Emplacement,  
-//             ]);
-
-//             // $employe->postes()->attach($request->id_post, ['date_deb'=>$request->date_deb]);
-        
-//            // $employe->admin()->attach($request->session()->get('id'));
-//             return redirect()->route('region.index')->with('status', 'region ajouté avec succès');
-// //   ajouter ou par
-//     }
-}
+    public function view_ajt()
+    {
+        return view('region.ajouterRegion');
+    }
+    public function create(Request $request)
+    {
+        try {
+            $request->validate([
+                'nom' => ['required', 'regex:/^[a-zA-Z\s\-]+$/', 'unique:region'], 
+                'emplacement' => 'required',
+            ]);
+    
+            $region = Region::create([
+                'nom' => $request->nom, 
+                'emplacement' => $request->emplacement,
+            ]);
+    
+            return redirect()->route('region.view')->with('status', 'Region ajouté avec succès');
+        } catch (\Exception $e) {
+            Log::error('Error creating region: ' . $e->getMessage());
+            return back()->withInput()->withErrors(['error' => 'Une erreur s\'est produite lors de l\'ajout de la région. Veuillez réessayer.']);
+        }
+}}

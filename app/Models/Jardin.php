@@ -19,6 +19,10 @@ class Jardin extends Model
 {
     return $this->belongsTo('App\Models\Region');
 }
+public function classes()
+    {
+        return $this->hasMany('App\Models\Classe');
+    }
     protected $fillable = [
         'REGION',
         'nom',

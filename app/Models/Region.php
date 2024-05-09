@@ -14,9 +14,12 @@ class Region extends Model
      *
      * @var array
      */
+    public function jardin()
+    {
+        return $this->hasMany('App\Models\Jardin');
+    }
     protected $fillable = [
-        'nom',
-        'statue',
-        'emplacement',
+        'Nom',
+        'Emplacement',
     ];
 }

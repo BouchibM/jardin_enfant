@@ -5,10 +5,9 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <div class="header-title">
-                    <h4 class="card-title">Liste Regions</h4>
+                    <h4 class="card-title">Liste Parents</h4>
                 </div>
-                <a href="{{route('region.view')}}"
-                    class="text-center btn btn-outline-secondary border-dotted btn-icon mt-lg-0 mt-md-0 mt-3">
+                <a href="" class="text-center btn btn-outline-secondary border-dotted btn-icon mt-lg-0 mt-md-0 mt-3">
                     <i class="btn-inner">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -16,45 +15,9 @@
                                 d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                         </svg>
                     </i>
-                    <span>Ajouter Region</span>
+                    <span>Ajouter parent</span>
                 </a>
             </div>
-            <!-- <div class="modal fade" id="addRegionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="addRegionModal">Ajouter Region</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <form>
-                            <div class="modal-body">
-
-                                <div class="form-group">
-                                    <label for="addnomregion">Nom</label>
-                                    <input type="text" class="form-control" id="addnomregion" placeholder="nom">
-                                </div>
-                                <div class="form-group">
-                                    <label for="addemplacementregion">Emplacement</label>
-                                    <select class="form-control" id="addemplacementregion">
-                                        <option>Nord</option>
-                                        <option>Sud</option>
-                                    </select>
-                                </div>
-
-
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div> -->
 
 
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -91,20 +54,16 @@
                                 aria-describedby="datatable_info">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Nom</th>
-                                        <th scope="col">Statue</th>
-                                        <th scope="col">Emplacement</th>
+                                        <th scope="col">Nom Complet</th>
+                                        <th scope="col">Telephone</th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($regions as $region)
-                                    <tr>
-                                        <td>{{ $region->nom }}</td>
-                                        <td>
-                                            <span class=" badge bg-primary">{{ $region->statue}}</span>
-                                        </td>
-                                        <td>{{ $region->emplacement }}</td>
+                                    @foreach ($parents as $parent)
+                                    <tr class="odd">
+                                        <td>{{ $parent->nom_complet }}</td>
+                                        <td>{{ $parent->tel_Portable }}</td>
                                         <td>
                                             <div class="flex align-items-center list-user-action">
                                                 <a class="btn btn-sm btn-icon btn-default" data-bs-toggle="tooltip"
@@ -187,10 +146,9 @@
                                 <tfoot>
 
                                     <tr>
-                                        <th scope="col">Nom</th>
-                                        <th scope="col">Statue</th>
-                                        <th scope="col">Emplacement</th>
-                                        <th scope="col">Actions</th> <!-- Nouvelle colonne pour les actions -->
+                                        <th scope="col">Nom Complet</th>
+                                        <th scope="col">Telephone</th>
+                                        <th scope="col">Actions</th>
                                     </tr>
                                 </tfoot>
                             </table>

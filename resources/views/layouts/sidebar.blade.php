@@ -195,7 +195,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#" role="button" aria-expanded="false"
+                        <a class="nav-link" href="#" role="button" aria-expanded="false"
                             aria-controls="sidebar-special">
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
@@ -209,17 +209,11 @@
                                 </svg>
                             </i>
                             <span class="item-name">Gestion employées</span>
-                            <i class="right-icon">
-                                <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
+
                         </a>
 
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#" role="button" aria-expanded="false"
+                        <a class="nav-link" href="{{route('parent.index')}}" role="button" aria-expanded="false"
                             aria-controls="sidebar-special">
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
@@ -232,18 +226,12 @@
                                         fill="currentColor"></path>
                                 </svg>
                             </i>
+
                             <span class="item-name">Gestion Parents</span>
-                            <i class="right-icon">
-                                <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
                         </a>
 
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#" role="button" aria-expanded="false"
+                        <a class="nav-link" href="{{route('enfant.index')}}" role="button" aria-expanded="false"
                             aria-controls="sidebar-special">
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
@@ -313,7 +301,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="#">
+                                <a class="nav-link " href="{{route('section.index')}}">
                                     <i class="icon">
                                         <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10"
                                             viewBox="0 0 24 24" fill="currentColor">
@@ -327,7 +315,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="#">
+                                <a class="nav-link " href="{{route('classe.index')}}">
                                     <i class="icon">
                                         <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10"
                                             viewBox="0 0 24 24" fill="currentColor">
@@ -342,8 +330,8 @@
                             </li>
                         </ul>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-GI" role="button"
-                            aria-expanded="false" aria-controls="sidebar-special">
+                        <a class="nav-link" href="#sidebar-GI" role="button" aria-expanded="false"
+                            aria-controls="sidebar-special">
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -356,18 +344,12 @@
                                 </svg>
                             </i>
                             <span class="item-name">Gestion Inscription</span>
-                            <i class="right-icon">
-                                <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
+
                         </a>
 
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-GR" role="button"
-                            aria-expanded="false" aria-controls="sidebar-special">
+                        <a class="nav-link" href="#sidebar-GR" role="button" aria-expanded="false"
+                            aria-controls="sidebar-special">
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -380,18 +362,12 @@
                                 </svg>
                             </i>
                             <span class="item-name">Reinscription</span>
-                            <i class="right-icon">
-                                <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
+
                         </a>
 
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-GPO" role="button"
-                            aria-expanded="false" aria-controls="sidebar-special">
+                        <a class="nav-link" href="#sidebar-GPO" role="button" aria-expanded="false"
+                            aria-controls="sidebar-special">
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -404,18 +380,12 @@
                                 </svg>
                             </i>
                             <span class="item-name"> Planifier Ouverture</span>
-                            <i class="right-icon">
-                                <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
+
                         </a>
 
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-GS" role="button"
-                            aria-expanded="false" aria-controls="sidebar-special">
+                        <a class="nav-link" href="{{route('structure.index')}}" role="button" aria-expanded="false"
+                            aria-controls="sidebar-special">
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -428,18 +398,11 @@
                                 </svg>
                             </i>
                             <span class="item-name">Structures</span>
-                            <i class="right-icon">
-                                <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
                         </a>
 
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-GI" role="button"
-                            aria-expanded="false" aria-controls="sidebar-special">
+                        <a class="nav-link" href="#sidebar-GI" role="button" aria-expanded="false"
+                            aria-controls="sidebar-special">
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -451,19 +414,11 @@
                                         fill="currentColor"></path>
                                 </svg>
                             </i>
-                            <span class="item-name"> Fonctions</span>
-                            <i class="right-icon">
-                                <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
-                        </a>
+                            <span class="item-name"> Fonctions</span> </a>
 
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-GS" role="button"
-                            aria-expanded="false" aria-controls="sidebar-special">
+                        <a class="nav-link" href="#sidebar-GS" role="button" aria-expanded="false"
+                            aria-controls="sidebar-special">
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -476,20 +431,13 @@
                                 </svg>
                             </i>
                             <span class="item-name">Statistics</span>
-                            <i class="right-icon">
-                                <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
+
                         </a>
 
 
 
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#" role="button" aria-expanded="false"
-                            aria-controls="">
+                        <a class="nav-link" href="#" role="button" aria-expanded="false" aria-controls="">
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -558,9 +506,8 @@
                         </i>
                     </div>
 
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon">
                             <span class="mt-2 navbar-toggler-bar bar1"></span>
                             <span class="navbar-toggler-bar bar2"></span>
