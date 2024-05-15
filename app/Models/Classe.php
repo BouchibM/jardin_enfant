@@ -22,6 +22,9 @@ class Classe extends Model
         'id',
         'nom',
         'capacite',
+        'section_id',
+        'jardin_id',
+       
     ];
-   
+
 }

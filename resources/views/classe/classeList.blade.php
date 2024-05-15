@@ -41,11 +41,6 @@
                 </div>
             </div>
 
-
-
-
-
-
             <div class="card-body">
                 <div class="table-responsive">
                     <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap5">
@@ -54,8 +49,9 @@
                                 aria-describedby="datatable_info">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Code</th>
                                         <th scope="col">Nom</th>
+                                        <th scope="col">Capacite</th>
+                                        <th scope="col">Section</th>
                                         <th scope="col">Jardin</th>
                                         <th scope="col">Actions</th>
                                     </tr>
@@ -63,8 +59,9 @@
                                 <tbody>
                                     @foreach($classes as $class)
                                     <tr class="odd">
-                                        <td>{{ $class->code }}</td>
                                         <td>{{ $class->nom }}</td>
+                                        <td>{{ $class->nom }}</td>
+                                        <td>{{ $class->section ? $class->section->nom : 'No section' }}</td>
                                         <td>{{ $class->jardin ? $class->jardin->nom : 'No jardin' }}</td>
                                         <td>
                                             <div class="flex align-items-center list-user-action">
@@ -148,8 +145,9 @@
                                 <tfoot>
 
                                     <tr>
-                                        <th scope="col">Code</th>
                                         <th scope="col">Nom</th>
+                                        <th scope="col">Capacite</th>
+                                        <th scope="col">Section</th>
                                         <th scope="col">Jardin</th>
                                         <th scope="col">Actions</th>
                                     </tr>

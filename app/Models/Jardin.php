@@ -24,7 +24,7 @@ public function classes()
         return $this->hasMany('App\Models\Classe');
     }
     protected $fillable = [
-        'REGION',
+        'region_id',
         'nom',
         'date_ouverture',
         'adresse',

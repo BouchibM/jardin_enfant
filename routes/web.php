@@ -44,9 +44,9 @@ Route::delete('/regions/{id}', [RegionController::class, 'destroy'])->name('regi
 Route::get('/jardinList', [JardinController::class, 'index'])->name('jardin.index');
 Route::get('/ajouterJardin', [JardinController::class, 'view_ajt'])->name('jardin.view');
 Route::post('/creatJardin', [JardinController::class, 'create'])->name('jardin.create');
-Route::get('/jardins/{code}/edit', [JardinController::class, 'edit'])->name('jardin.edit');
-Route::put('/jardins/{code}', [JardinController::class, 'update'])->name('jardin.update');
-Route::delete('/jardins/{code}', [JardinController::class, 'destroy'])->name('jardin.destroy');
+Route::get('/jardins/{id}/edit', [JardinController::class, 'edit'])->name('jardin.edit');
+Route::put('/jardins/{id}', [JardinController::class, 'update'])->name('jardin.update');
+Route::delete('/jardins/{id}', [JardinController::class, 'destroy'])->name('jardin.destroy');
 
 Route::get('/sectionList', [SectionController::class, 'index'])->name('section.index');
 Route::get('/ajoutersection', [SectionController::class, 'view_ajt'])->name('section.view');  
