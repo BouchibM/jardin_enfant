@@ -12,4 +12,6 @@ class ParentsController extends Controller
     $parents = Parents::all();
     return view('parent.parentList', compact('parents'));
   }
+
+  
 }

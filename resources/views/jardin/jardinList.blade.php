@@ -7,7 +7,8 @@
                 <div class="header-title">
                     <h4 class="card-title">Liste Jardins</h4>
                 </div>
-                <a href="" class="text-center btn btn-outline-secondary border-dotted btn-icon mt-lg-0 mt-md-0 mt-3">
+                <a href="{{route('jardin.view')}}"
+                    class="text-center btn btn-outline-secondary border-dotted btn-icon mt-lg-0 mt-md-0 mt-3">
                     <i class="btn-inner">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -29,13 +30,17 @@
                         </div>
                         <div class="modal-body">
                             <br>
-                            <h5>Êtes-vous sûr de vouloir supprimer ?</h5>
+                            <h5>Êtes-vous sûr de vouloir desactiver ?</h5>
                             <br>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-dark border-dotted"
-                                data-bs-dismiss="modal">Annuler</button>
-                            <button type="button" class="btn btn-warning">OK</button>
+                            <form id="deleteForm" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" class="btn btn-outline-dark border-dotted"
+                                    data-bs-dismiss="modal">Annuler</button>
+                                <button type="submit" class="btn btn-warning">OK</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -69,7 +74,7 @@
                                 <tbody>
                                     <tr class="odd">
                                         @foreach ($jardins as $jardin)
-                                        <td>{{ $jardin->region ? $jardin->region->nom : 'No Region' }}</td>
+                                        <td>{{ $jardin->region ? $jardin->region->nom : 'Null' }}</td>
                                         <td>{{ $jardin->nom }}</td>
                                         <td>{{ $jardin->date_ouverture }}</td>
                                         <td>{{ $jardin->adresse }}</td>
@@ -107,7 +112,8 @@
                                                     </span>
                                                 </a>
                                                 <a class="btn btn-sm btn-icon btn-warning" data-bs-toggle="tooltip"
-                                                    data-bs-placement="top" data-original-title="Edit" href="#"
+                                                    data-bs-placement="top" data-original-title="Edit"
+                                                    href="{{ route('jardin.edit', $jardin->code) }}"
                                                     aria-label="Modifier" data-bs-original-title="Modifier">
                                                     <span class="btn-inner">
                                                         <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"

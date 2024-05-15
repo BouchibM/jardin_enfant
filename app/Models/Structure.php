@@ -14,6 +14,10 @@ class Structure extends Model
      *
      * @var array
      */
+    public function entreprise()
+    {
+        return $this->belongsTo('App\Models\Entreprise');
+    }
     protected $fillable = [
         'code',
         'nom',

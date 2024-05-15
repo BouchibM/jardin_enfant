@@ -1,6 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('main')
+
 <div class="conatiner-fluid content-inner mt-n5 py-0">
     <div class="card">
         <div class="card-header d-flex justify-content-between">

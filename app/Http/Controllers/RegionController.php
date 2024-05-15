@@ -21,20 +21,47 @@ class RegionController extends Controller
     }
     public function create(Request $request)
     {
-        try {
-            $request->validate([
-                'nom' => ['required', 'regex:/^[a-zA-Z\s\-]+$/', 'unique:region'], 
-                'emplacement' => 'required',
-            ]);
-    
-            $region = Region::create([
-                'nom' => $request->nom, 
-                'emplacement' => $request->emplacement,
-            ]);
-    
-            return redirect()->route('region.view')->with('status', 'Region ajouté avec succès');
-        } catch (\Exception $e) {
-            Log::error('Error creating region: ' . $e->getMessage());
-            return back()->withInput()->withErrors(['error' => 'Une erreur s\'est produite lors de l\'ajout de la région. Veuillez réessayer.']);
-        }
-}}
+
+
+        $request->validate([
+            'Nom' => ['required', 'regex:/^[a-zA-Z\s\-]+$/', 'unique:region'],
+            'Emplacement' => 'required',
+        ]);
+
+        $region = Region::create([
+            'nom' => $request->Nom,
+            'emplacement' => $request->Emplacement,
+        ]);
+
+        return redirect()->route('region.index')->with('status', 'Region ajouté avec succès');
+    }
+    public function edit($id)
+    {
+        $region = Region::findOrFail($id);
+        return view('region.modifierRegion', compact('region'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'Nom' => ['required', 'regex:/^[a-zA-Z\s\-]+$/'],
+            'Emplacement' => 'required',
+            'Statue' => 'required',
+        ]);
+
+        $region = Region::findOrFail($id);
+        $region->update([
+            'nom' => $request->Nom,
+            'emplacement' => $request->Emplacement,
+            'statue' => $request->Statue,
+        ]);
+        return redirect()->route('region.index')->with('status', 'Region modifier avec succès');
+
+    }
+    public function destroy($id)
+    {
+        $region = Region::findOrFail($id);
+        $region->delete();
+        return redirect()->route('region.index')->with('status', 'Region supprimer avec succès');
+    }
+}

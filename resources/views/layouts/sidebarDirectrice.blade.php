@@ -401,7 +401,7 @@
                         </a>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('fonction.index')}}" role="button" aria-expanded="false"
+                        <a class="nav-link" href="#sidebar-GI" role="button" aria-expanded="false"
                             aria-controls="sidebar-special">
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
