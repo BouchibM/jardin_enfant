@@ -18,13 +18,27 @@ class JardinController extends Controller
         {
            
                 $request->validate([
-                    'nom' => ['required', 'regex:/^[a-zA-Z\s\-]+$/', 'unique:jardin'], 
-                    'emplacement' => 'required',
+                    'REGION' => 'required',
+                    'nom'   => ['required', 'regex:/^[a-zA-Z\s\-]+$/', 'unique:jardin'],
+                    'date_ouverture' => ['required', 'date_format:Y-m-d'],
+                    'adresse' => 'required',
+                    'num_agrement'=> 'integer',
+                    'nature_juridique',
+                    'poste_amenage'=>'integer',
+                    'capacite' => 'integer',
+                    'status' => 'required',
                 ]);
         
                 $jardin = Jardin::create([
-                    'nom' => $request->nom, 
-                    'emplacement' => $request->emplacement,
+                    'REGION' => $request->Region,
+                    'nom'=>$request->nom,
+                    'date_ouverture'=>$request->deskripsi,
+                    'adresse',
+                    'num_agrement',
+                    'nature_juridique' => ['required', 'regex:/Sonatrach/'],
+                    'poste_amenage',
+                    'capacite',
+                    'status',
                 ]);
         
                 return redirect()->route('jardin.view')->with('status', 'Jardin ajouté avec succès');
@@ -38,16 +52,28 @@ class JardinController extends Controller
             public function update(Request $request, $id)
             {
                 $request->validate([
-                    'Nom' => ['required', 'regex:/^[a-zA-Z\s\-]+$/'],
-                    'Emplacement' => 'required',
-                    'Statue' => 'required',
+                    'REGION' => 'required',
+                    'nom'   => ['required', 'regex:/^[a-zA-Z\s\-]+$/', 'unique:jardin'],
+                    'date_ouverture' => ['required', 'date_format:Y-m-d'],
+                    'adresse' => 'required',
+                    'num_agrement'=> 'integer',
+                    'nature_juridique' => ['required', 'regex:/Sonatrach/'],
+                    'poste_amenage' => 'integer',
+                    'capacite' => 'integer',
+                    'status' => 'required',
                 ]);
         
                 $jardin = Jardin::findOrFail($id);
                 $jardin->update([
-                    'nom' => $request->Nom,
-                    'emplacement' => $request->Emplacement,
-                    'statue' => $request->Statue,
+                    'REGION',
+                    'nom',
+                    'date_ouverture',
+                    'adresse',
+                    'num_agrement',
+                    'nature_juridique',
+                    'poste_amenage',
+                    'capacite',
+                    'status',
                 ]);
                 return redirect()->route('jardin.index')->with('status', 'Jardin modifier avec succès');
         

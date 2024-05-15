@@ -113,8 +113,8 @@
                                                 </a>
                                                 <a class="btn btn-sm btn-icon btn-warning" data-bs-toggle="tooltip"
                                                     data-bs-placement="top" data-original-title="Edit"
-                                                    href="{{ route('jardin.edit', $jardin->code) }}"
-                                                    aria-label="Modifier" data-bs-original-title="Modifier">
+                                                    href="{{ route('jardin.edit', $jardin->id) }}" aria-label="Modifier"
+                                                    data-bs-original-title="Modifier">
                                                     <span class="btn-inner">
                                                         <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                                             xmlns="http://www.w3.org/2000/svg">
