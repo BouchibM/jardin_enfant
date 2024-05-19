@@ -7,7 +7,8 @@
                 <div class="header-title">
                     <h4 class="card-title">Liste Classes</h4>
                 </div>
-                <a href="" class="text-center btn btn-outline-secondary border-dotted btn-icon mt-lg-0 mt-md-0 mt-3">
+                <a href="{{route('classe.view')}}"
+                    class="text-center btn btn-outline-secondary border-dotted btn-icon mt-lg-0 mt-md-0 mt-3">
                     <i class="btn-inner">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -60,7 +61,7 @@
                                     @foreach($classes as $class)
                                     <tr class="odd">
                                         <td>{{ $class->nom }}</td>
-                                        <td>{{ $class->nom }}</td>
+                                        <td>{{ $class->capacite }}</td>
                                         <td>{{ $class->section ? $class->section->nom : 'No section' }}</td>
                                         <td>{{ $class->jardin ? $class->jardin->nom : 'No jardin' }}</td>
                                         <td>

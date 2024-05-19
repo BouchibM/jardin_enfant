@@ -19,7 +19,7 @@ use App\Http\Controllers\EnfantController;
 use App\Http\Controllers\FonctionController;
 
 Route::get('/admin', function () {
-    return view('admin.utilisateur');
+    return view('layouts.sidebar');
 });
 
 Route::get('/employee', function () {
@@ -28,10 +28,7 @@ Route::get('/employee', function () {
 
 Route::get('/parentList', [ParentsController::class, 'index'])->name('parent.index');
 
-
 Route::get('/enfantList', [EnfantController::class, 'index'])->name('enfant.index');
-
-
 
 Route::get('/regionList', [RegionController::class, 'index'])->name('region.index');
 Route::get('/ajouterRegion', [RegionController::class, 'view_ajt'])->name('region.view');
@@ -39,7 +36,6 @@ Route::post('/creatRegion', [RegionController::class, 'create'])->name('region.c
 Route::get('/regions/{id}/edit', [RegionController::class, 'edit'])->name('region.edit');
 Route::put('/regions/{id}', [RegionController::class, 'update'])->name('region.update');
 Route::delete('/regions/{id}', [RegionController::class, 'destroy'])->name('region.destroy');
-
 
 Route::get('/jardinList', [JardinController::class, 'index'])->name('jardin.index');
 Route::get('/ajouterJardin', [JardinController::class, 'view_ajt'])->name('jardin.view');
@@ -54,7 +50,6 @@ Route::post('/creatsection', [SectionController::class, 'create'])->name('sectio
 Route::get('/sections/{id}/edit', [SectionController::class, 'edit'])->name('section.edit');
 Route::put('/sections/{id}', [SectionController::class, 'update'])->name('section.update');
 Route::delete('/sections/{id}', [SectionController::class, 'destroy'])->name('section.destroy');
-
 
 Route::get('/classeList', [ClasseController::class, 'index'])->name('classe.index');
 Route::get('/ajouterClasse', [ClasseController::class, 'view_ajt'])->name('classe.view');
@@ -77,6 +72,9 @@ Route::get('/fonctions/{code}/edit', [FonctionController::class, 'edit'])->name(
 Route::put('/fonctions/{code}', [FonctionController::class, 'update'])->name('fonction.update');
 Route::delete('/fonctions/{code}', [FonctionController::class, 'destroy'])->name('fonction.destroy');
   
-
+Route::get('/Directrice', function () {
+    return view('layouts.sidebarDirectrice');
+});
+Route::get('/reafectenfant', [EnfantController::class, 'reafect'])->name('enfant.reafect');
 
 ?>

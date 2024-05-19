@@ -12,7 +12,6 @@
     <!-- Library / Plugin Css Build -->
     <link rel="stylesheet" href="../../assets/css/core/libs.min.css" />
 
-
     <!-- Hope Ui Design System Css -->
     <link rel="stylesheet" href="../../assets/css/hope-ui.min.css?v=2.0.0" />
 

@@ -122,10 +122,9 @@
                                                     </span>
                                                 </a>
                                                 <a class="btn btn-sm btn-icon btn-danger delete-btn"
-                                                    data-bs-toggle="modal" data-bs-placement="top" href="#"
-                                                    aria-label="Supprimer" data-bs-original-title="Supprimer"
-                                                    data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                    data-id="{{ $region->id }}">
+                                                    data-bs-placement="top" href="#" aria-label="Supprimer"
+                                                    data-bs-original-title="Supprimer" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal" data-id="{{ $region->id }}">
                                                     <!-- outon pour ouvrir la modal -->
 
 

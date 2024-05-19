@@ -31,13 +31,13 @@ class FonctionController extends Controller
                 return redirect()->route('fonction.view')->with('status', 'Fonction ajouté avec succès');
             
     }
-    public function edit($id)
+    public function edit($code)
     {
-        $fonction = Fonction::findOrFail($id);
+        $fonction = Fonction::findOrFail($code);
         return view('fonction.modifierFonction', compact('fonction'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $code) 
     {
         $request->validate([
             'code' => ['required', 'regex:/^[a-zA-Z0-9\s\-]+$/', 'unique:fonction'],
@@ -46,7 +46,7 @@ class FonctionController extends Controller
             'structure' => 'required',
         ]);
 
-        $fonction = Fonction::findOrFail($id);
+        $fonction = Fonction::findOrFail($code);
         $fonction->update([
             'nom' => $request->Nom,
             'emplacement' => $request->Emplacement,

@@ -14,9 +14,14 @@ class parents extends Model
      *
      * @var array
      */
+    
     protected $fillable = [
         'nom_complet',
         'tel_portable',
-
     ];
+
+    public function enfants()
+    {
+        return $this->hasMany(Enfant::class);
+    }
 }

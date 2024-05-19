@@ -18,13 +18,19 @@ class Classe extends Model
     {
         return $this->belongsTo('App\Models\Jardin');
     }
+    public function section()
+    {
+        return $this->belongsTo('App\Models\Section');
+    }
+    public function enfants() 
+    { 
+        return $this->hasMany('App\Models\Enfant'); 
+    }
     protected $fillable = [
         'id',
         'nom',
         'capacite',
         'section_id',
         'jardin_id',
-       
     ];
-
 }

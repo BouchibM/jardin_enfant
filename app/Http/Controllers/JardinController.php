@@ -26,26 +26,26 @@ class JardinController extends Controller
     {
         $request->validate([
             'region_id' => 'required',
-            'nom'   => ['required', 'regex:/^[a-zA-Z\s\-]+$/', 'unique:jardin'],
-            'date_ouverture' => ['required', 'date_format:Y-m-d'],
-            'adresse' => 'required',
+            'Nom'   => ['required', 'regex:/^[a-zA-Z\s\-]+$/'],
+            'Date_ouverture' => ['required', 'date_format:Y-m-d'],
+            'Adresse' => 'required',
             'num_agrement'=> 'integer',
             'nature_juridique'  =>['required', 'regex:/Sonatrach/'],
             'poste_amenage'=>'integer',
-            'capacite' => 'integer',
+            'Capacite' => 'integer',
             'status' => 'required',
         ]);
         
         $jardin = Jardin::create([
             'region_id' => $request->region_id,
-            'nom'=>$request->nom,
+            'nom'=>$request->Nom,
             'date_ouverture'=>$request->date_ouverture,
             'adresse' => $request->adresse,
             'num_agrement' => $request->num_agrement,
             'nature_juridique' => $request->nature_juridique,
             'poste_amenage' => $request->poste_amenage,
-            'capacite' => $request->capacite,
-            'status' => $request->status,
+            'Capacite' => $request->capacite,
+            'Status' => $request->status,
         ]);
 
         return redirect()->route('jardin.index')->with('status', 'Jardin ajouté avec succès');
