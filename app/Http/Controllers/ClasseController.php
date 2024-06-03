@@ -15,17 +15,18 @@ class ClasseController extends Controller
         return View('classe.classeList', compact('classes'));
     }
     public function view_ajt()
-    {$sections = Section::all();
+    {
+        $sections = Section::all();
         $jardins = Jardin::all();
-        return view('classe.ajouterclasse', ['sections' => $sections] , ['jardins' => $jardins]);
+        return view('classe.ajouterclasse', ['sections' => $sections], ['jardins' => $jardins]);
     }
     public function create(Request $request)
     {
         $request->validate([
-        'nom' => ['required', 'regex:/^[a-zA-Z\s\-]+$/', 'unique:classes'],
-        'capacite' => 'integer',
-        'section_id' => 'required',
-        'jardin_id' => 'required',
+            'nom' => ['required', 'regex:/^[a-zA-Z\s\-]+$/', 'unique:classes'],
+            'capacite' => 'integer',
+            'section_id' => 'required',
+            'jardin_id' => 'required',
         ]);
 
         $classe = Classe::create([

@@ -17,15 +17,43 @@ use App\Http\Controllers\StructureController;
 use App\Http\Controllers\ParentsController;
 use App\Http\Controllers\EnfantController;
 use App\Http\Controllers\FonctionController;
+use App\Http\Controllers\AuthController;
 
+// ajouter la route de auth: en cas de faute il revient dans cette page 
+// Dashboard routes
 Route::get('/admin', function () {
-    return view('layouts.sidebar');
+    return view('statistic');
+})->name('admin');
+Route::get('/Directrice', function () {
+    return view('layouts.sidebarDirectrice');
+});
+Route::get('/chefService', function () {
+    return view('layouts.sidebarChefDeService');
+})->name('chefService.dashboard');
+Route::get('/Directrice', function () {
+    return view('layouts.sidebarDirectrice');
+})->name('Directrice');
+Route::get('/chefDepartement', function () {
+    return view('layouts.sidebarChefDeDepartement');
+})->name('chefDepartement.dashboard');// Route::get('/gestionnaire', function () {
+//     return view('layouts.sidebarGestionnaire');
+// })->name('gestionnaire.dashboard');
+
+// Route::get('/parent', function () {
+//     return view('layouts.sidebarParent');
+// })->name('parent.dashboard');
+
+Route::get('/statistic', function () {
+    return view('statistic');
 });
 
 Route::get('/employee', function () {
     return view('employeeList');
 })->name('employee');
 
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('Authentification');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+// Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/parentList', [ParentsController::class, 'index'])->name('parent.index');
 
 Route::get('/enfantList', [EnfantController::class, 'index'])->name('enfant.index');
@@ -45,7 +73,7 @@ Route::put('/jardins/{id}', [JardinController::class, 'update'])->name('jardin.u
 Route::delete('/jardins/{id}', [JardinController::class, 'destroy'])->name('jardin.destroy');
 
 Route::get('/sectionList', [SectionController::class, 'index'])->name('section.index');
-Route::get('/ajoutersection', [SectionController::class, 'view_ajt'])->name('section.view');  
+Route::get('/ajoutersection', [SectionController::class, 'view_ajt'])->name('section.view');
 Route::post('/creatsection', [SectionController::class, 'create'])->name('section.create');
 Route::get('/sections/{id}/edit', [SectionController::class, 'edit'])->name('section.edit');
 Route::put('/sections/{id}', [SectionController::class, 'update'])->name('section.update');
@@ -71,10 +99,8 @@ Route::post('/creatFonction', [FonctionController::class, 'create'])->name('fonc
 Route::get('/fonctions/{code}/edit', [FonctionController::class, 'edit'])->name('fonction.edit');
 Route::put('/fonctions/{code}', [FonctionController::class, 'update'])->name('fonction.update');
 Route::delete('/fonctions/{code}', [FonctionController::class, 'destroy'])->name('fonction.destroy');
-  
-Route::get('/Directrice', function () {
-    return view('layouts.sidebarDirectrice');
-});
+
+
 Route::get('/reafectenfant', [EnfantController::class, 'reafect'])->name('enfant.reafect');
 
 ?>
