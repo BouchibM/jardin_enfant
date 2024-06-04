@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Utilisateur;
-class AuthController extends Controller
+class PersonelAuthController extends Controller
 {
     public function showLoginForm()
     {
@@ -31,15 +31,15 @@ class AuthController extends Controller
                 case 2:
                     return redirect()->route('Directrice');
                 case 3:
-                    return redirect()->route('chefDepartement.dashboard');
+                    return redirect()->route('chefDepartement');
                 case 4:
-                    return redirect()->route('gestionnaire.dashboard');
+                    return redirect()->route('gestionnaire');
                 case 5:
-                    return redirect()->route('parent.dashboard');
+                    return redirect()->route('parent');
                 case 6:
-                    return redirect()->route('directrice.dashboard');
+                    return redirect()->route('directrice');
                 default:
-                    return redirect()->route('home');
+                    return redirect()->route('login');
             }
         }
     
@@ -48,5 +48,10 @@ class AuthController extends Controller
             'email' => 'The provided credentials do not match our records.',
             'motdepass' =>'The provided credentials do not match our records.',
         ]);
+    }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

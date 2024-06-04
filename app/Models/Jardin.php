@@ -7,31 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jardin extends Model
 {
-    protected $table = 'jardin';
     use HasFactory;
-     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
 
-     public function region()
-{
-    return $this->belongsTo('App\Models\Region');
-}
-public function classes()
-    {
-        return $this->hasMany('App\Models\Classe');
+    protected $table = 'jardin';  // Assurez-vous que le nom de la table est correct
+
+    protected $fillable = ['nom', 'adresse', 'capacite', 'region_id'];  // Adapté en fonction de vos besoins
+
+    // Relation : un jardin peut avoir plusieurs classes
+    public function classes() {
+        return $this->hasMany(Classe::class);
     }
-    protected $fillable = [
-        'region_id',
-        'nom',
-        'date_ouverture',
-        'adresse',
-        'num_agrement',
-        'nature_juridique',
-        'poste_amenage',
-        'capacite',
-        'status',
-    ];
+
+    // Relation : un jardin appartient à une région
+    public function region() {
+        return $this->belongsTo(Region::class);
+    }
+    public function sections()
+    {
+        return $this->hasMany(Section::class);
+    }
+    
 }

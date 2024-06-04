@@ -9,6 +9,13 @@ use App\Models\Structure;
 use App\Models\Parents;
 use App\Models\Enfant;
 use App\Models\Fonction;
+use App\Models\Inscription;
+use App\Models\Reinscription;
+use App\Models\Desinscription;
+use App\Models\Transfer;
+use App\Models\Gestionnaire;
+use App\Models\Utilisateur;
+
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\JardinController;
 use App\Http\Controllers\ClasseController;
@@ -17,31 +24,47 @@ use App\Http\Controllers\StructureController;
 use App\Http\Controllers\ParentsController;
 use App\Http\Controllers\EnfantController;
 use App\Http\Controllers\FonctionController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PersonelPAuthController;
+use App\Http\Controllers\InscriptionController;
+use App\Http\Controllers\ReinscriptionController;
+use App\Http\Controllers\DesinscriptionController;
+use App\Http\Controllers\TransferController;
+use App\Http\Controllers\GestionnaireController;
+use App\Http\Controllers\ParentAuthController;
+use App\Http\Controllers\PersonelAuthController;
+use App\Http\Controllers\GestionnaireReinscriptionController;
+use App\Http\Controllers\GestionnaireTransfertController;
+use App\Http\Controllers\UtilisateurController;
 
 // ajouter la route de auth: en cas de faute il revient dans cette page 
 // Dashboard routes
 Route::get('/admin', function () {
     return view('statistic');
 })->name('admin');
+
 Route::get('/Directrice', function () {
     return view('layouts.sidebarDirectrice');
 });
+
 Route::get('/chefService', function () {
     return view('layouts.sidebarChefDeService');
-})->name('chefService.dashboard');
+})->name('chefService');
+
 Route::get('/Directrice', function () {
     return view('layouts.sidebarDirectrice');
 })->name('Directrice');
+
 Route::get('/chefDepartement', function () {
     return view('layouts.sidebarChefDeDepartement');
-})->name('chefDepartement.dashboard');// Route::get('/gestionnaire', function () {
-//     return view('layouts.sidebarGestionnaire');
-// })->name('gestionnaire.dashboard');
+})->name('chefDepartement');
 
-// Route::get('/parent', function () {
-//     return view('layouts.sidebarParent');
-// })->name('parent.dashboard');
+Route::get('/gestionnaire', function () {
+    return view('layouts.sidebargestionnaire');
+})->name('gestionnaire');
+
+Route::get('/parent', function () {
+     return view('layouts.sidebarUser');
+ })->name('parent');
 
 Route::get('/statistic', function () {
     return view('statistic');
@@ -51,12 +74,14 @@ Route::get('/employee', function () {
     return view('employeeList');
 })->name('employee');
 
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('Authentification');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
-// Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/Authentification', [PersonelAuthController::class, 'showLoginForm'])->name('Authentification');
+Route::post('/login', [PersonelAuthController::class, 'login'])->name('login');
+Route::post('/logout', [PersonelAuthController::class, 'logout'])->name('logout');
+
 Route::get('/parentList', [ParentsController::class, 'index'])->name('parent.index');
 
 Route::get('/enfantList', [EnfantController::class, 'index'])->name('enfant.index');
+Route::get('/reafectenfant', [EnfantController::class, 'reafect'])->name('enfant.reafect');
 
 Route::get('/regionList', [RegionController::class, 'index'])->name('region.index');
 Route::get('/ajouterRegion', [RegionController::class, 'view_ajt'])->name('region.view');
@@ -100,7 +125,53 @@ Route::get('/fonctions/{code}/edit', [FonctionController::class, 'edit'])->name(
 Route::put('/fonctions/{code}', [FonctionController::class, 'update'])->name('fonction.update');
 Route::delete('/fonctions/{code}', [FonctionController::class, 'destroy'])->name('fonction.destroy');
 
+Route::get('/Utilisateur', [UtilisateurController::class, 'dashboard'])->middleware('auth');
+Route::get('/parent', [ParentsController::class, 'dashboard'])->middleware('auth');
 
-Route::get('/reafectenfant', [EnfantController::class, 'reafect'])->name('enfant.reafect');
+// enfants
+Route::get('/enfants', [EnfantController::class, 'index'])->name('enfants.index');
+;
 
+Route::get('/inscriptionList', [InscriptionController::class, 'index'])->name('inscription.index');
+Route::get('/ajouterInscription', [InscriptionController::class, 'view_ajt'])->name('inscription.view');
+Route::post('/createInscription', [InscriptionController::class, 'create'])->name('inscription.create');
+Route::get('/jardins/{region_id}', [InscriptionController::class, 'getJardinsByRegion'])->name('jardins.byRegion');
+
+
+// Reinscriptions
+Route::get('/reinscriptionList', [ReinscriptionController::class, 'index'])->name('reinscription.index');
+Route::get('/ajouterReinscription', [ReinscriptionController::class, 'view_ajt'])->name('reinscription.view');
+Route::post('/createReinscription', [ReinscriptionController::class, 'create'])->name('reinscription.create');
+Route::get('/editReinscription/{id}', [ReinscriptionController::class, 'edit'])->name('reinscription.edit');
+Route::put('/updateReinscription/{id}', [ReinscriptionController::class, 'update'])->name('reinscription.update');
+
+// desinscriptions
+Route::get('/desinscriptionList', [DesinscriptionController::class, 'index'])->name('desinscription.index');
+Route::get('/ajouterDesinscription', [DesinscriptionController::class, 'view_ajt'])->name('desinscription.view');
+Route::post('/createDesinscription', [DesinscriptionController::class, 'create'])->name('desinscription.create');
+// transfert
+Route::get('/transfertList', [TransferController::class, 'index'])->name('transfert.index');
+Route::get('/ajouterTransfert', [TransferController::class, 'view_ajt'])->name('transfert.view');
+Route::post('/createTransfert', [TransferController::class, 'create'])->name('transfert.create');
+
+Route::get('/Login', [ParentAuthController::class, 'showLoginForm'])->name('Login');
+Route::post('/Login', [ParentAuthController::class, 'login']);
+
+Route::get('/register', [ParentAuthController::class, 'showRegisterForm'])->name('register.form');
+Route::post('/register', [ParentAuthController::class, 'register'])->name('register');
+
+Route::post('/Logout', [ParentAuthController::class, 'logout'])->name('Logout');
+
+Route::get('/gestion-preinscriptions', [GestionnaireController::class, 'index'])->name('gestionnaire.inscriptions.index');
+Route::post('/gestion-preinscriptions/accept/{id}', [GestionnaireController::class, 'accept'])->name('gestionnaire.inscriptions.accept');
+Route::post('/gestion-preinscriptions/reject/{id}', [GestionnaireController::class, 'reject'])->name('gestionnaire.inscriptions.reject');
+
+Route::get('/gestion-reinscriptions', [GestionnaireReinscriptionController::class, 'index'])->name('gestionnaire.reinscriptions.index');
+Route::post('/gestion-reinscriptions/accept/{id}', [GestionnaireReinscriptionController::class, 'accept'])->name('gestionnaire.reinscriptions.accept');
+Route::post('/gestion-reinscriptions/reject/{id}', [GestionnaireReinscriptionController::class, 'reject'])->name('gestionnaire.reinscriptions.reject');
+Route::post('/gestion-reinscriptions/verifyPayment/{id}', [GestionnaireReinscriptionController::class, 'verifyPayment'])->name('gestionnaire.reinscriptions.verifyPayment');
+
+Route::get('/gestion-transferts', [GestionnaireTransfertController::class, 'index'])->name('gestionnaire.transfert.index');
+Route::post('/gestion-transferts/accept/{id}', [GestionnaireTransfertController::class, 'accept'])->name('gestionnaire.transfert.accept');
+Route::post('/gestion-transferts/reject/{id}', [GestionnaireTransfertController::class, 'reject'])->name('gestionnaire.transfert.reject');
 ?>

@@ -43,7 +43,7 @@
                 @enderror
             </div>
             <div class="col-12">
-                <button style="background-color: #ffc107; border-color: #ffc107; margin-top: 20px;"
+                <button class="btn btn" style=" background-color: #ff8c00; color:white; margin-top: 20px;"
                     type="submit">Modifier</button>
             </div>
         </form>
